@@ -1,55 +1,66 @@
+var isEmergency = false;
 function toggleLights() {
-    setTimeout(function() {
+  setTimeout(function() {
+    if(isEmergency){return;}
       // Turn of yellow light after 2 seconds
     document.getElementById('leftYellowLightY').classList.remove('yellowOn');
     document.getElementById('bottomYellowLightX').classList.remove('yellowOn');
     document.getElementById('rightYellowLightY').classList.remove('yellowOn');
     document.getElementById('topYellowLightX').classList.remove('yellowOn');
+    if(isEmergency){return;}
     // Turn on red light for 14 seconds
     document.getElementById('leftRedLightY').classList.add('redOn');
     document.getElementById('bottomGreenLightX').classList.add('greenOn');
     document.getElementById('rightRedLightY').classList.add('redOn');
     document.getElementById('topGreenLightX').classList.add('greenOn');
+    if(isEmergency){return;}
     setTimeout(function() {
       // Turn on red light after 14 seconds
       document.getElementById('leftRedLightY').classList.remove('redOn');
       document.getElementById('bottomGreenLightX').classList.remove('greenOn');
       document.getElementById('rightRedLightY').classList.remove('redOn');
       document.getElementById('topGreenLightX').classList.remove('greenOn');
+      if(isEmergency){return;}
       // Turn on yellow light for 2 seconds
       document.getElementById('leftYellowLightY').classList.add('yellowOn');
       document.getElementById('bottomYellowLightX').classList.add('yellowOn');
       document.getElementById('rightYellowLightY').classList.add('yellowOn');
       document.getElementById('topYellowLightX').classList.add('yellowOn');
+      if(isEmergency){return;}
       setTimeout(function() {
         // Turn of yellow light after 2 seconds
         document.getElementById('leftYellowLightY').classList.remove('yellowOn');
         document.getElementById('bottomYellowLightX').classList.remove('yellowOn');
         document.getElementById('rightYellowLightY').classList.remove('yellowOn');
         document.getElementById('topYellowLightX').classList.remove('yellowOn');
+        if(isEmergency){return;}
         // Turn on green light for 14 seconds
         document.getElementById('leftGreenLightY').classList.add('greenOn');
         document.getElementById('bottomRedLightX').classList.add('redOn');
         document.getElementById('rightGreenLightY').classList.add('greenOn');
         document.getElementById('topRedLightX').classList.add('redOn');
+        if(isEmergency){return;}
         setTimeout(function() {
           // Turn of green light after 14 seconds
           document.getElementById('leftGreenLightY').classList.remove('greenOn');
           document.getElementById('bottomRedLightX').classList.remove('redOn');
           document.getElementById('rightGreenLightY').classList.remove('greenOn');
           document.getElementById('topRedLightX').classList.remove('redOn');
+          if(isEmergency){return;}
           // Turn on yellow light for 2 seconds
           document.getElementById('leftYellowLightY').classList.add('yellowOn');
           document.getElementById('bottomYellowLightX').classList.add('yellowOn');
           document.getElementById('rightYellowLightY').classList.add('yellowOn');
           document.getElementById('topYellowLightX').classList.add('yellowOn');
+          if(isEmergency){return;}
           // Repeat after 0 seconds
-          setTimeout(toggleLights, 0);
+        setTimeout(toggleLights, 0);
         },14000);
       }, 2000);
     },14000);
   }, 2000);
-  }
+}
+
   // Start the light sequence
   toggleLights();
 
@@ -123,7 +134,7 @@ function moveBlackCar() {
    
     if(document.getElementById('topGreenLightX').classList.contains('greenOn') || positionBlack!=225)
     {
-      positionBlack += 1; 
+      positionBlack += 1.5; 
       BlackCar.style.top = positionBlack + 'px';
     }
 
@@ -149,7 +160,7 @@ function moveYellowCar() {
    
     if(document.getElementById('bottomGreenLightX').classList.contains('greenOn') || positionYellow!=225)
     {
-      positionYellow += 1; 
+      positionYellow += 1.5; 
       YellowCar.style.bottom = positionYellow + 'px';
     }
 
@@ -162,27 +173,36 @@ function moveYellowCar() {
 
 moveYellowCar();
 
-// function stopX(){
-//   document.getElementById('leftGreenLightX').classList.remove('greenOff');
-//   document.getElementById('rightGreenLightX').classList.remove('greenOff');
-//   document.getElementById('leftYellowLightX').classList.remove('YellowOff');
-//   document.getElementById('rightYellowLightX').classList.remove('YellowOff');
-//   document.getElementById('leftRedLightX').classList.add('redOn');
-//   document.getElementById('rightRedLightX').classList.remove('redOn');
-//   console.log("working...");
-// }
+function stopLightsAndActivateEmergency() {
 
-// var stopx = document.getElementById('stopX');
-// stopx.addEventListener('click',stopX);
+  isEmergency = true;
+ 
+  document.getElementById('leftGreenLightY').classList.remove('greenOn');
+  document.getElementById('bottomGreenLightX').classList.remove('greenOn');
+  document.getElementById('rightGreenLightY').classList.remove('greenOn');
+  document.getElementById('topGreenLightX').classList.remove('greenOn');
+  
+  document.getElementById('leftRedLightY').classList.remove('redOn');
+  document.getElementById('bottomRedLightX').classList.remove('redOn');
+  document.getElementById('rightRedLightY').classList.remove('redOn');
+  document.getElementById('topRedLightX').classList.remove('redOn');
 
-// // Function to stop the signals
-// function stopSignals() {
-//   // Stop the signal sequence
-//   clearTimeout(toggleLights);
-// }
+  // Turn on all yellow lights
+  document.getElementById('leftYellowLightY').classList.add('yellowOn');
+  document.getElementById('bottomYellowLightX').classList.add('yellowOn');
+  document.getElementById('rightYellowLightY').classList.add('yellowOn');
+  document.getElementById('topYellowLightX').classList.add('yellowOn');
 
-// // Get the emergency button element
-// var emergencyButton = document.getElementById('emergencyButton');
+}
 
-// // Add event listener to the emergency button to stop signals when clicked
-// emergencyButton.addEventListener('click', stopSignals);
+function startLightsAndActivateEmergency() {
+
+  if(isEmergency == true){
+    isEmergency = false;
+    toggleLights();
+  }
+  
+}
+
+document.getElementById('emergencyButton').addEventListener('click', stopLightsAndActivateEmergency);
+document.getElementById('startButton').addEventListener('click', startLightsAndActivateEmergency);
