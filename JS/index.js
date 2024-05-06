@@ -268,5 +268,5 @@ function xStop() {
 document.getElementById('emergencyButton').addEventListener('click', stopLightsAndActivateEmergency);
 document.getElementById('yStop').addEventListener('click', yStop);
 document.getElementById('xStop').addEventListener('click', xStop);
-document.getElementById('startButton').addEventListener('click', startLightsAndActivateEmergency);
+document.getElementById('startButton').addEventListener('click', startLightsAndDeactivateEmergency);
 
