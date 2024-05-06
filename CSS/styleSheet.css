@@ -219,21 +219,21 @@ body {
 }
 #startButton {
   position: absolute;
-  top: 10%;
-  left: 30%;
+  top: 4%;
+  left: 16%;
 }
 #emergencyButton {
   position: absolute;
-  top: 10%;
-  left: 10%;
+  top: 4%;
+  left: 5%;
 }
 #xStop {
   position: absolute;
   top: 10%;
-  left: 25%;
+  left: 11%;
 }
 #yStop {
   position: absolute;
   top: 10%;
-  left: 20%;
+  left: 5%;
 }
