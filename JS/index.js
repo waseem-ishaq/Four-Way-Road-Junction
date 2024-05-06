@@ -195,7 +195,7 @@ function stopLightsAndActivateEmergency() {
 
 }
 
-function startLightsAndActivateEmergency() {
+function startLightsAndDeactivateEmergency() {
 
   if(isEmergency == true){
     isEmergency = false;
