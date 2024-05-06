@@ -220,10 +220,20 @@ body {
 #startButton {
   position: absolute;
   top: 10%;
-  left: 20%;
+  left: 30%;
 }
 #emergencyButton {
   position: absolute;
   top: 10%;
   left: 10%;
+}
+#xStop {
+  position: absolute;
+  top: 10%;
+  left: 25%;
+}
+#yStop {
+  position: absolute;
+  top: 10%;
+  left: 20%;
 }

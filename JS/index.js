@@ -199,10 +199,74 @@ function startLightsAndActivateEmergency() {
 
   if(isEmergency == true){
     isEmergency = false;
+    
+  document.getElementById('leftGreenLightY').classList.remove('greenOn');
+  document.getElementById('bottomGreenLightX').classList.remove('greenOn');
+  document.getElementById('rightGreenLightY').classList.remove('greenOn');
+  document.getElementById('topGreenLightX').classList.remove('greenOn');
+  
+  document.getElementById('leftRedLightY').classList.remove('redOn');
+  document.getElementById('bottomRedLightX').classList.remove('redOn');
+  document.getElementById('rightRedLightY').classList.remove('redOn');
+  document.getElementById('topRedLightX').classList.remove('redOn');
+
+  document.getElementById('leftYellowLightY').classList.remove('yellowOn');
+  document.getElementById('bottomYellowLightX').classList.remove('yellowOn');
+  document.getElementById('rightYellowLightY').classList.remove('yellowOn');
+  document.getElementById('topYellowLightX').classList.remove('yellowOn');
+
     toggleLights();
   }
   
 }
 
+function yStop() {
+
+  isEmergency = true;
+ 
+  document.getElementById('leftYellowLightY').classList.remove('yellowOn');
+  document.getElementById('rightYellowLightY').classList.remove('yellowOn');
+  document.getElementById('bottomYellowLightX').classList.remove('yellowOn');
+  document.getElementById('topYellowLightX').classList.remove('yellowOn');
+
+  document.getElementById('bottomGreenLightX').classList.remove('greenOn');
+  document.getElementById('topGreenLightX').classList.remove('greenOn');
+  
+  document.getElementById('leftRedLightY').classList.remove('redOn');
+  document.getElementById('rightRedLightY').classList.remove('redOn');
+
+  document.getElementById('leftGreenLightY').classList.add('greenOn');
+  document.getElementById('bottomRedLightX').classList.add('redOn');
+  document.getElementById('rightGreenLightY').classList.add('greenOn');
+  document.getElementById('topRedLightX').classList.add('redOn');
+
+}
+
+function xStop() {
+
+  isEmergency = true;
+ 
+  
+  document.getElementById('leftYellowLightY').classList.remove('yellowOn');
+  document.getElementById('rightYellowLightY').classList.remove('yellowOn');
+  document.getElementById('bottomYellowLightX').classList.remove('yellowOn');
+  document.getElementById('topYellowLightX').classList.remove('yellowOn');
+
+  document.getElementById('bottomRedLightX').classList.remove('redOn');
+  document.getElementById('topRedLightX').classList.remove('redOn');
+  
+  document.getElementById('leftGreenLightY').classList.remove('greenOn');
+  document.getElementById('rightGreenLightY').classList.remove('greenOn');
+
+  document.getElementById('leftRedLightY').classList.add('redOn');
+  document.getElementById('bottomGreenLightX').classList.add('greenOn');
+  document.getElementById('rightRedLightY').classList.add('redOn');
+  document.getElementById('topGreenLightX').classList.add('greenOn');
+
+}
+
 document.getElementById('emergencyButton').addEventListener('click', stopLightsAndActivateEmergency);
+document.getElementById('yStop').addEventListener('click', yStop);
+document.getElementById('xStop').addEventListener('click', xStop);
 document.getElementById('startButton').addEventListener('click', startLightsAndActivateEmergency);
+
